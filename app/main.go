@@ -89,6 +89,7 @@ func main() {
 		Certificate: &external.CertificateProvider{TimeOut: opts.TimeOut},
 		File:        &external.FileProvider{TimeOut: opts.TimeOut},
 		RMQ:         &external.RMQProvider{TimeOut: opts.TimeOut},
+		Mysql:       &external.MysqlProvider{TimeOut: opts.TimeOut},
 	}
 
 	srv := server.Rest{

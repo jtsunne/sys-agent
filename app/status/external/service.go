@@ -24,6 +24,7 @@ type Service struct {
 type Providers struct {
 	HTTP        StatusProvider
 	Mongo       StatusProvider
+	Mysql       StatusProvider
 	Docker      StatusProvider
 	Program     StatusProvider
 	Nginx       StatusProvider
@@ -98,6 +99,8 @@ func (s *Service) Status() []Response {
 				resp, err = s.providers.HTTP.Status(r)
 			case strings.HasPrefix(r.URL, "mongodb://"):
 				resp, err = s.providers.Mongo.Status(r)
+			case strings.HasPrefix(r.URL, "mysql://"):
+				resp, err = s.providers.Mysql.Status(r)
 			case strings.HasPrefix(r.URL, "docker://"):
 				resp, err = s.providers.Docker.Status(r)
 			case strings.HasPrefix(r.URL, "program://"):

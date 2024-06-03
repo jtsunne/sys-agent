@@ -18,6 +18,7 @@ type Parameters struct {
 		Certificate []Certificate `yaml:"certificate"`
 		File        []File        `yaml:"file"`
 		Mongo       []Mongo       `yaml:"mongo"`
+		MySQL       []MySQL       `yaml:"mysql"`
 		Nginx       []Nginx       `yaml:"nginx"`
 		Program     []Program     `yaml:"program"`
 		Docker      []Docker      `yaml:"docker"`
@@ -63,6 +64,12 @@ type Mongo struct {
 	Name          string        `yaml:"name"`
 	URL           string        `yaml:"url"`
 	OplogMaxDelta time.Duration `yaml:"oplog_max_delta"`
+}
+
+// MySQL represents a mysql service to check
+type MySQL struct {
+	Name string `yaml:"name"`
+	URL  string `yaml:"url"`
 }
 
 // Nginx represents a nginx service to check
@@ -149,6 +156,10 @@ func (p *Parameters) MarshalServices() []string {
 			}
 		}
 		res = append(res, m)
+	}
+
+	for _, v := range p.Services.MySQL {
+		res = append(res, fmt.Sprintf("%s:mysql://%s", v.Name, v.URL))
 	}
 
 	for _, v := range p.Services.Nginx {

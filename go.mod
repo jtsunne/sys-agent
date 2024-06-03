@@ -11,6 +11,7 @@ require (
 	github.com/go-pkgz/mongo/v2 v2.2.0
 	github.com/go-pkgz/rest v1.18.2
 	github.com/go-pkgz/syncs v1.3.2
+	github.com/go-sql-driver/mysql v1.8.1
 	github.com/shirou/gopsutil/v3 v3.24.1
 	github.com/stretchr/testify v1.8.4
 	github.com/umputun/go-flags v1.5.1
@@ -19,6 +20,7 @@ require (
 )
 
 require (
+	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/go-pkgz/expirable-cache v1.0.0 // indirect
